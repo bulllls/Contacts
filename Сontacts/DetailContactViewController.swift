@@ -17,18 +17,16 @@ class DetailContactViewController: UIViewController {
     @IBOutlet weak var lastNameDetailContact: UILabel!
     @IBOutlet weak var phoneNumberDetailContact: UILabel!
     @IBOutlet weak var emailDetailContact: UILabel!
-    var contact: CNContact!
+    var contact: Contact!
     override func viewDidLoad() {
         super.viewDidLoad()
-        firstNameDetailContact.text = contact.givenName
-        lastNameDetailContact.text = contact.familyName
-//        if contact.phoneNumbers.count > 0 {
-//            let number = contact.phoneNumbers[0].value
-//            label.text = number.stringValue
-//        
-//        }
-        phoneNumberDetailContact.text = "1230"
-        emailDetailContact.text = "@"
+        firstNameDetailContact.text = contact.firstName
+        lastNameDetailContact.text = contact.lastName
+        if let data = contact.image {
+            imageDetailContact.image = UIImage(data: data)
+        }
+        phoneNumberDetailContact.text = contact.phoneNumber
+        emailDetailContact.text = contact.email
        
     }
     

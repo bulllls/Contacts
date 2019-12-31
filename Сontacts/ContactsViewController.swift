@@ -11,8 +11,7 @@ import ContactsUI
 class ContactsViewController: UIViewController {
     
     @IBOutlet weak var contactsTable: UITableView!
-    var contacts = [CNContact]()
-    var cont = [Contact]()
+    var contacts = [Contact]()
     let searchController = UISearchController (searchResultsController: nil )
     let cellId = "ContactTableViewCell"
     
@@ -30,17 +29,16 @@ class ContactsViewController: UIViewController {
         do {
             try contactStore.enumerateContacts(with: request){
                 (contact, stop) in
-                self.contacts.append(contact)
                 let name = contact.givenName
                 let lastName = contact.familyName
                 let phone = (contact.phoneNumbers[0].value as CNPhoneNumber).stringValue
-                var email = ""
+                var email = "no E-mail"
                 if contact.emailAddresses.count != 0 {
                     email = contact.emailAddresses[0].value as String
                 }
-                self.cont.append(Contact(image: contact.imageData, firstName: name, lastName: lastName, phoneNumber: phone, email: email))
+                self.contacts.append(Contact(image: contact.imageData, firstName: name, lastName: lastName, phoneNumber: phone, email: email))
             }
-            print(cont)
+            //print(contacts)
         } catch {
             print("unable to fetch contacts")
         }
@@ -61,19 +59,13 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = contactsTable.dequeueReusableCell(withIdentifier: cellId) as? ContactTableViewCell else { return UITableViewCell()}
 
-        cell.lastNameContact.text = contacts[indexPath.row].givenName
-        cell.firstNameContact.text = contacts[indexPath.row].familyName
-        
-        let phoneNumber = contacts[indexPath.row].phoneNumbers[.zero]
-        let number = phoneNumber.value as CNPhoneNumber
-        cell.phoneNumberContact.text = number.stringValue
-        if contacts[indexPath.row].emailAddresses.count != 0 {
-            cell.emailContact.text = contacts[indexPath.row].emailAddresses[0].value as String
-        }
-        if let data = contacts[indexPath.row].imageData {
+        cell.lastNameContact.text = contacts[indexPath.row].firstName
+        cell.firstNameContact.text = contacts[indexPath.row].lastName
+        cell.phoneNumberContact.text = contacts[indexPath.row].phoneNumber
+        cell.emailContact.text = contacts[indexPath.row].email
+        if let data = contacts[indexPath.row].image {
             cell.imageContact.image = UIImage(data: data)
         }
-        
         return cell
     }
     
