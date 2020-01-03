@@ -9,9 +9,6 @@
 import UIKit
 import ContactsUI
 class DetailContactViewController: UIViewController {
-
-    
-    
     @IBOutlet weak var imageDetailContact: UIImageView!
     @IBOutlet weak var firstNameDetailContact: UILabel!
     @IBOutlet weak var lastNameDetailContact: UILabel!
@@ -22,12 +19,11 @@ class DetailContactViewController: UIViewController {
         super.viewDidLoad()
         firstNameDetailContact.text = contact.firstName
         lastNameDetailContact.text = contact.lastName
+        phoneNumberDetailContact.text = contact.phoneNumber
+        emailDetailContact.text = contact.email
         if let data = contact.image {
             imageDetailContact.image = UIImage(data: data)
         }
-        phoneNumberDetailContact.text = contact.phoneNumber
-        emailDetailContact.text = contact.email
-       
     }
     
 

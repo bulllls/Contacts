@@ -19,8 +19,9 @@
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iF0-E1-vrF">
                         <rect key="frame" x="0.0" y="0.0" width="373" height="77.5"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B33-dz-yZQ">
-                                <rect key="frame" x="0.0" y="14" width="125" height="50"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="B33-dz-yZQ">
+                                <rect key="frame" x="0.0" y="30.5" width="125" height="17.5"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="TrV-MY-GPP"/>
                                     <constraint firstAttribute="height" constant="125" id="hd6-kI-yaK"/>
@@ -81,4 +82,7 @@
             <point key="canvasLocation" x="170.28985507246378" y="162.05357142857142"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="person" catalog="system" width="64" height="58"/>
+    </resources>
 </document>

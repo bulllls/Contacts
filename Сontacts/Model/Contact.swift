@@ -10,11 +10,14 @@ import Foundation
 
 struct Contact {
     var image: Data?
-    var firstName: String?
-    var lastName: String?
-    var phoneNumber: String?
-    var email: String?
-    init(image: Data?, firstName: String?, lastName: String?, phoneNumber: String?, email: String?){
+    var firstName: String
+    var lastName: String
+    var phoneNumber: String
+    var email: String
+    var fullName: String {
+        firstName + " \(lastName)"
+    }
+    init(image: Data?, firstName: String, lastName: String, phoneNumber: String, email: String){
         self.image = image
         self.firstName = firstName
         self.lastName = lastName
